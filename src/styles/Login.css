@@ -1,0 +1,77 @@
+.login-background {
+    background-image: url('/public/images/bgLogin.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.home-container {
+    text-align: center;
+    min-height: 90vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.home-container h2 {
+    text-align: center;
+    font-size: 40px;
+    color: rgb(66, 23, 2);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.29);
+}
+
+.form-group-horizontal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 15px;
+    gap: 20px;
+}
+
+.form-input {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.custom-button{
+    margin-top: 20px;
+    width: 200px;
+    background-color: #c0a695 !important;
+    border-color: #917a6a !important;
+    color: rgb(66, 23, 2) !important;
+    font-size: 20px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.58) !important;
+    transition: background-color 0.5s, transform 0.5s, color 0.5s !important;
+}
+
+.custom-button:hover {
+    transform: scale(1.05);
+    background-color: #7d442f !important;
+    color: white !important;
+}
+
+@font-face {
+    font-family: 'Vollda';
+    src: url('/public/fonts/Vollda-Bold.otf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+}

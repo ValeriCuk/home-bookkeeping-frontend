@@ -1,0 +1,107 @@
+/* Стилізація іконки відкриття меню */
+.menu-button {
+    top: 15px;
+    left: 15px;
+    background: none;
+    border: none;
+    color: rgb(66, 23, 2);
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001;
+    margin-top: 20px;
+    padding-left: 20px;
+}
+
+.menu-button.hidden{
+    display: none;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    display: none;
+}
+
+.sidebar-overlay.visible {
+    display: block;
+}
+
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: #c0a695;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    padding-top: 60px;
+    transition: left 5.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.sidebar::-webkit-scrollbar{
+    display: none;
+}
+
+.sidebar.open {
+    left: 0;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: rgb(66, 23, 2);
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar nav ul li {
+    padding: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.sidebar nav ul li a,
+.sidebar nav ul li button {
+    display: flex;
+    align-items: flex-start;
+    color: rgb(66, 23, 2);
+    text-decoration: none;
+    font-size: 18px;
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 10px;
+    padding: 5px 10px;
+    transition: background-color 0.5s, color 0.5s
+}
+
+
+.icon {
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.sidebar nav ul li a:hover,
+.sidebar nav ul li button:hover {
+    background-color:  #7d442f;
+    color: white;
+}

@@ -1,25 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, {useEffect, useState} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button, Container } from 'react-bootstrap';
-import '../App.css';
+import { FaArrowLeft } from "react-icons/fa";
+import '../styles/Home.css';
+import Sidebar from "../reusableComponents/Sidebar";
 
 const Home = () => {
-  return (
-    <Container className="home-container">
-      <h1>Ласкаво просимо до вашої домашньої бухгалтерії!</h1>
-      <div className="mt-4">
-        <Link to="/income-expenses">
-          <Button variant="primary" className="m-2">Облік доходів та витрат</Button>
-        </Link>
-        <Link to="/income">
-          <Button variant="success" className="m-2">Доходи</Button>
-        </Link>
-        <Link to="/expenses">
-          <Button variant="danger" className="m-2">Витрати</Button>
-        </Link>
-      </div>
-    </Container>
-  );
+    const [username, setUsername] = useState("");
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const backgroundDiv = document.createElement('div');
+        backgroundDiv.classList.add('home-background');
+        document.body.appendChild(backgroundDiv);
+        const storedUsername = localStorage.getItem("username");
+        if (storedUsername) {
+            setUsername(storedUsername);
+        }
+        return () => {
+            document.body.removeChild(backgroundDiv);
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem("username");
+        navigate("/login");
+    };
+
+    return (
+        <>
+            <Sidebar />
+            <Container className="home-container" style={{fontFamily: 'Vollda, sans-serif'}}>
+                <div className="user-info">{username}</div>
+                <h1>Ласкаво просимо до вашої
+                    <br/>домашньої бухгалтерії!</h1>
+                <div className="mt-4">
+                    <Link to="/income-expenses">
+                        <Button className="custom-button">Облік доходів та витрат</Button>
+                    </Link><br/>
+                    <Link to="/income">
+                        <Button className="custom-button">Доходи</Button>
+                    </Link><br/>
+                    <Link to="/expenses">
+                        <Button className="custom-button">Витрати</Button>
+                    </Link>
+                </div>
+            </Container>
+        </>
+    );
 };
 
 export default Home;

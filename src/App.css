@@ -36,18 +36,3 @@
     transform: rotate(360deg);
   }
 }
-
-.home-container {
-  background-image: url('/public/images/image0.jpg');
-  background-size: cover;
-  background-position: center center;
-  height: 100vh;
-  width: 100%;
-}
-
-@font-face {
-  font-family: 'Vollda';
-  src: url('/public/fonts/Vollda-Bold.otf');
-  font-weight: normal;
-  font-style: normal;
-}
