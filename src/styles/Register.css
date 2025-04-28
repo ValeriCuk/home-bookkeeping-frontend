@@ -1,0 +1,39 @@
+.register-background {
+    background-image: url('/public/images/bgLogin.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.register-container {
+    text-align: center;
+    min-height: 90vh;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.register-container  h2 {
+    text-align: center;
+    font-size: 40px;
+    color: rgb(66, 23, 2);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.29);
+}
+
+.register-input-general{
+    padding-top: 20px;
+}
+
+.register-input-field{
+    padding-top: 15px;
+}

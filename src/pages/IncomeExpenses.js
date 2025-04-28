@@ -26,7 +26,7 @@ const IncomeExpenses = () => {
 
     useEffect(() => {
         const backgroundDiv = document.createElement('div');
-        backgroundDiv.classList.add('login-background');
+        backgroundDiv.classList.add('income-expenses-background');
         document.body.appendChild(backgroundDiv);
         return () =>{
             document.body.removeChild(backgroundDiv);

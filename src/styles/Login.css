@@ -11,7 +11,7 @@
     z-index: -1;
 }
 
-.home-container {
+.login-container {
     text-align: center;
     min-height: 90vh;
     margin: 0;
@@ -23,7 +23,7 @@
     overflow-x: hidden;
 }
 
-.home-container h2 {
+.login-container h2 {
     text-align: center;
     font-size: 40px;
     color: rgb(66, 23, 2);
@@ -61,6 +61,24 @@
     background-color: #7d442f !important;
     color: white !important;
 }
+
+.custom-button-register{
+    margin-top: 30px;
+    width: 150px;
+    background-color: rgba(177, 164, 164, 0.96) !important;
+    border-color: #917a6a !important;
+    color: rgb(66, 23, 2) !important;
+    font-size: 14px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.58) !important;
+    transition: background-color 0.5s, transform 0.5s, color 0.5s !important;
+}
+
+.custom-button-register:hover {
+    transform: scale(1.05);
+    background-color: #7d442f !important;
+    color: white !important;
+}
+
 
 @font-face {
     font-family: 'Vollda';
