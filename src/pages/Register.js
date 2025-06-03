@@ -10,6 +10,7 @@ function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
     const goToLogin = () => {
         navigate("/login")
@@ -24,14 +25,45 @@ function Register() {
         }
     }, []);
 
-    const handleRegister = (e) => {
+    const handleRegister = async (e) => {
         e.preventDefault();
 
-        if (password === confirmPassword) {
-            alert('Реєстрація успішна!');
-            navigate('/login'); // Переходить назад на сторінку входу після реєстрації
-        } else {
-            alert('Паролі не співпадають!');
+
+        if (!name || !surname || !login || !email || !password || !confirmPassword) {
+            setErrorMessage("Будь ласка, заповніть усі поля.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            setErrorMessage("Паролі не співпадають!");
+            return
+        }
+        const requestBody = {
+            name,
+            surname,
+            login,
+            email,
+            password
+        };
+
+        try{
+          const response = await fetch("http://localhost:8080/register", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify(requestBody)
+          });
+
+          if (response.status === 200) {
+              navigate("/login");
+          } else{
+              const error = await response.text();
+              setErrorMessage(error);
+          }
+        } catch (error) {
+            console.error("Помилка при реєстрації", error);
+            setErrorMessage("Сталася помилка при реєстрації.");
         }
     };
 
@@ -100,6 +132,12 @@ function Register() {
                     />
                 </Form.Group>
 
+                {errorMessage && (
+                    <div style={{ color: "red", marginBottom: "10px" }}>
+                        {errorMessage}
+                    </div>
+                )}
+
                 <Button variant="primary" type="submit" className="custom-button">
                     Зареєструватися
                 </Button>
@@ -117,3 +155,4 @@ function Register() {
 }
 
 export default Register;
+

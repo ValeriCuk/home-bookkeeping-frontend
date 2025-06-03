@@ -11,6 +11,25 @@ const Sidebar = () => {
         setIsOpen(!isOpen);
     };
 
+    const handleLogout = async() => {
+        try{
+            const response = await fetch("http://localhost:8080/logout",{
+                method: "POST",
+                credentials:"include"
+            });
+
+            if (response.status === 200) {
+                console.log("Вихід успішний!");
+            }else{
+                console.log("Помилка при вході: статус ", response.status);
+            }
+        }catch(err){
+            console.error("Помилка при виході:", err)
+        }
+        toggleSidebar();
+        navigate("/login");
+    };
+
     return(
         <>
             <button className={`menu-button ${isOpen ? "hidden" : ""}`}
@@ -46,9 +65,15 @@ const Sidebar = () => {
                                 </Link>
                             </li>
                             <li>
-                                <Link to="/login" onClick={toggleSidebar}>
+                                <button className="logout-button" onClick={handleLogout} style={{
+                                    background: "none",
+                                    border: "none",
+                                    padding: 0,
+                                    cursor: "pointer",
+                                    color: "inherit"
+                                }}>
                                     <FaSignOutAlt className="icon"/> Вийти
-                                </Link>
+                                </button>
                             </li>
                         </ul>
                     </nav>

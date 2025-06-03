@@ -6,10 +6,16 @@ import '../styles/Login.css';
 function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 	const navigate = useNavigate();
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		if (!username || !password) {
+			setErrorMessage("Будь ласка, заповніть обидва поля.");
+			return;
+		}
 
 		try {
 			const response = await fetch("http://localhost:8080/login", {
@@ -17,6 +23,7 @@ function Login() {
 				headers: {
 					"Content-Type": "application/json",
 				},
+				credentials: "include",
 				body: JSON.stringify({
 					login: username,
 					password: password
@@ -27,10 +34,10 @@ function Login() {
 				const data = await response.text();
 				console.log(data);
 				localStorage.setItem("username", username);
+				setErrorMessage("");
 				navigate("/home")
 			}else{
-				const errorMessage = await response.text();
-				alert(`${errorMessage}`);
+				setErrorMessage("Неправильний логін або пароль.");
 			}
 		}catch (error){
 			console.error("Помилка при відправці запиту: ", error);
@@ -75,6 +82,12 @@ function Login() {
 						onChange={(e) => setPassword(e.target.value)}
 					/>
 				</Form.Group>
+
+				{errorMessage && (
+					<div style={{ color: "red", marginBottom: "10px" }}>
+						{errorMessage}
+					</div>
+				)}
 
 				<Button variant="primary" type="submit" className="custom-button">
 					Увійти
